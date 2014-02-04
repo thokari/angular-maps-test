@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html ng-app="map-test">
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?libraries=weather,visualization&amp;sensor=false&amp;v=3.14"></script>
+<script type="text/javascript" src="http://underscorejs.org/underscore.js"></script>
+<script type="text/javascript" src="angular-google-maps.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.6/socket.io.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div ng-controller="MainCtrl">
+		<div class="google-map" center="map.center" zoom="map.zoom" options="map.options" draggable="true">
+			<div ng-repeat="car in cars">
+
+				<div class="marker" coords="car.coords" icon="car.icon" click="carClick(car)"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
