@@ -3,7 +3,7 @@ def rng = new Random()
 
 def car = init(rng)
 
-vertx.setTimer(rng.nextInt(config.interval)) {
+vertx.setTimer(rng.nextInt(config.interval) + 1) {
 	vertx.setPeriodic(config.interval) {
 		vertx.eventBus.send("websocket.server", car)
 	}

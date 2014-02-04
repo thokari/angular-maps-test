@@ -9,7 +9,8 @@ def webSocketServerConf = [
 	"host": "localhost"
 ]
 
-def carCount = 300
+def testDuration = 60 // seconds
+def carCount = 200
 def carConfig = [interval: 3000]
 
 container.with {
@@ -18,4 +19,6 @@ container.with {
 
 	deployVerticle("car.groovy", carConfig, carCount)
 }
+
+vertx.setTimer(testDuration * 1000) { container.exit() }
 

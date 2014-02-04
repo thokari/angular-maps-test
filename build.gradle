@@ -1,2 +1,45 @@
+buildscript {
+	repositories { mavenCentral() }
+	dependencies { classpath 'de.undercouch:gradle-download-task:0.4' }
+}
+
+import de.undercouch.gradle.tasks.download.Download
+
 apply plugin: "wrapper"
 apply plugin: "eclipse"
+
+ext {
+	downloadUrlPath = "http://dl.bintray.com/vertx/downloads/"
+	downloadFilename = "vert.x-2.1M5.zip"
+}
+
+task downloadVertx(type: Download) {
+	onlyIf { !file("$buildDir/$downloadFilename").exists() }
+	src downloadUrlPath + downloadFilename
+	dest buildDir
+}
+
+task unzipVertx(type: Copy) {
+	dependsOn downloadVertx
+	from zipTree("$buildDir/$downloadFilename")
+	into buildDir
+}
+
+task runMapsExample(type: Exec) {
+	dependsOn unzipVertx
+	ext { vertxBinDir = "$buildDir/${downloadFilename - '.zip'}/bin" }
+	workingDir "$projectDir/vertx"
+	args "run", "start.groovy"
+	commandLine "$vertxBinDir/vertx"
+	underWindows {
+		commandLine "cmd", "/c", "$vertxBinDir/vertx.bat", "run", "start.groovy"
+	}
+	doFirst { println "Vert.x will probably download stuff. When it's done, open http://localhost in your browser." }
+	doLast { println "Test complete. Change parameters in vertx/start.groovy" }
+}
+
+def underWindows(Closure clos) {
+	if(System.properties."os.name" ==~ "[W|w]indows.*") {
+		clos.call()
+	}
+}
