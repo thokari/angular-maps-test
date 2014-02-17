@@ -5,6 +5,8 @@ buildscript {
 
 import de.undercouch.gradle.tasks.download.Download
 
+defaultTasks "downloadVertx", "unzipVertx", "runMapsExample"
+
 apply plugin: "wrapper"
 apply plugin: "eclipse"
 

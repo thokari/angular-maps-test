@@ -22,7 +22,7 @@ server.websocketHandler { ws ->
 		clients += ws
 		ws.endHandler { clients -= ws }
 	}
-}.listen(config.port, config.host)
+}.listen(config.port)
 
 
 

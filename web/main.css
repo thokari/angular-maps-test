@@ -1,39 +1,16 @@
+html,body {
+	height: 100%;
+}
+
+.main-container {
+	height: 100%;
+}
+
+.angular-google-map,.google-map {
+	height: 100%;
+}
+
 .angular-google-map-container {
-	height: 800px;
-}
-
-.car-repeat-enter,.car-repeat-leave,.car-repeat-move {
-	-webkit-transition: all linear 0.5s;
-	-moz-transition: all linear 0.5s;
-	-ms-transition: all linear 0.5s;
-	-o-transition: all linear 0.5s;
-	transition: all linear 0.5s;
-}
-
-.car-repeat-enter {
-	line-height: 0;
-	opacity: 0;
-}
-
-.car-repeat-enter.car-repeat-enter-active {
-	line-height: 20px;
-	opacity: 1;
-}
-
-.car-repeat-leave {
-	opacity: 1;
-	line-height: 20px;
-}
-
-.car-repeat-leave.car-repeat-leave-active {
-	opacity: 0;
-	line-height: 0;
-}
-
-.car-repeat-move {
-	
-}
-
-.car-repeat-move.car-repeat-move-active {
-	
+	height: 100%;
+	position: relative;
 }

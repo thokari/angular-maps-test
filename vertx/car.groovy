@@ -21,8 +21,8 @@ vertx.setPeriodic(rng.nextInt(500) + 500) {
 def init(rng) {
 	def id = UUID.randomUUID()
 	def coords = [
-		latitude: 45 + rng.nextDouble() / 100,
-		longitude: 11 + rng.nextDouble() / 100
+		latitude : 53.542666 + rng.nextDouble() / 100,
+		longitude : 9.985268 + rng.nextDouble() / 100
 	]
 	[id: id, coords: coords]
 }
