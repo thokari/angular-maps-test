@@ -31,8 +31,7 @@ task runMapsExample(type: Exec) {
 	dependsOn unzipVertx
 	ext { vertxBinDir = "$buildDir/${downloadFilename - '.zip'}/bin" }
 	workingDir "$projectDir/vertx"
-	args "run", "start.groovy"
-	commandLine "$vertxBinDir/vertx"
+	commandLine "$vertxBinDir/vertx run start.groovy"
 	underWindows {
 		commandLine "cmd", "/c", "$vertxBinDir/vertx.bat", "run", "start.groovy"
 	}
