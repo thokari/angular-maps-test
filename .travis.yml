@@ -1,1 +1,5 @@
-script: ./gradlew runMapsExample
+--- 
+before_script: 
+  - "chmod a+x gradlew"
+script: 
+  - "./gradlew runMapsExample"
